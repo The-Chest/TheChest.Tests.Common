@@ -1,8 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup Label="Information">
+		<Title>The Chest Tests Common</Title>
+		<Description></Description>
+		<Authors>The Chest</Authors>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup Label="Repository">
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RepositoryUrl>https://github.com/The-Chest/TheChest.TestsCommon</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryBranch>main</RepositoryBranch>
+		<RepositoryCommit>$(SourceRevisionId)</RepositoryCommit>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Compiler">
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DebugType>portable</DebugType>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Symbols">
+		<IncludeSymbols>true</IncludeSymbols>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup Label="CI">
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Assembly">
+		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<SignAssembly>false</SignAssembly>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Analysis">
+		<EnableNETAnalyzers>false</EnableNETAnalyzers>
+		<EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+		<AnalysisLevel>none</AnalysisLevel>
+	</PropertyGroup>
+
+	<ItemGroup Label="Package">
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Label="Docs">
+		<None Include="..\..\README.md">
+			<Pack>False</Pack>
+		</None>
+		<None Include="..\..\CHANGELOG.md">
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Label="Dependencies">
+		<PackageReference Include="TheChest.Core" Version="0.14.0" />
+	</ItemGroup>
 
 </Project>
