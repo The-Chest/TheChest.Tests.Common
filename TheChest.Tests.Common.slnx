@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/docs/" />
+  <Folder Name="/infra/" />
+  <Folder Name="/src/">
+    <Project Path="src/TheChest.Tests.Common/TheChest.Tests.Common.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
