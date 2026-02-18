@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/configs/">
+    <File Path=".editorconfig" />
+  </Folder>
   <Folder Name="/docs/" />
   <Folder Name="/infra/" />
   <Folder Name="/src/">
