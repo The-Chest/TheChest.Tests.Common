@@ -1,5 +1,7 @@
 # Copilot Instructions for TheChest.Tests.Common
 
+**Project Language:** English is the primary language for all code, documentation, and comments in this repository.
+
 ## Overview
 This project provides common test utilities, dependency injection, and item factories for The Chest ecosystem. It is structured as a .NET Standard 2.1 library, focusing on reusable test patterns and extensible DI mechanisms.
 
