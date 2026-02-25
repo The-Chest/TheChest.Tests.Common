@@ -1,5 +1,8 @@
 name: Publish library  
 
+permissions:
+  contents: write
+
 on:
   push:
      tags:        
