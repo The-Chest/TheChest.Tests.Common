@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace TheChest.Tests.Common.Attributes
+namespace TheChest.Tests.Common.Attributes.Reflection
 {
     public sealed class ReflectionExceptionHandleProxy<T> : DispatchProxy
     {
@@ -24,7 +24,7 @@ namespace TheChest.Tests.Common.Attributes
             return (T)proxy;
         }
 
-        protected override object? Invoke(MethodInfo? targetMethod, object?[]? args)
+        protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
             if (targetMethod == null)
                 throw new ArgumentNullException(nameof(targetMethod));
