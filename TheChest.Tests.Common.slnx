@@ -3,7 +3,14 @@
     <File Path=".editorconfig" />
   </Folder>
   <Folder Name="/docs/" />
-  <Folder Name="/infra/" />
+  <Folder Name="/infra/">
+    <File Path=".github/copilot-instructions.md" />
+  </Folder>
+  <Folder Name="/infra/workflows/">
+    <File Path=".github/workflows/codeql.workflow.yml" />
+    <File Path=".github/workflows/publish_library.workflow.yml" />
+    <File Path=".github/workflows/sonarcloud.yml" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/TheChest.Tests.Common/TheChest.Tests.Common.csproj" />
   </Folder>
