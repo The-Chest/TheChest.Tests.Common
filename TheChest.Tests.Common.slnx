@@ -14,5 +14,7 @@
   <Folder Name="/src/">
     <Project Path="src/TheChest.Tests.Common/TheChest.Tests.Common.csproj" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/TheChest.Tests.Common.Tests/TheChest.Tests.Common.Tests.csproj" />
+  </Folder>
 </Solution>
