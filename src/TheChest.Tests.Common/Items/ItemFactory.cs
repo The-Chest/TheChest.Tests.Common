@@ -49,13 +49,14 @@ namespace TheChest.Tests.Common.Items
                     values.Shuffle();
                     return (T)values.GetValue(0)!;
                 }
-                return SetRandomValue<T>(instanceType);
+                return (T)instanceType.SetRandomValue();
             }
 
             var fields = instanceType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (var field in fields)
             {
-                field.SetValue(instance, ItemFactory<T>.SetRandomValue<dynamic>(field.FieldType));
+                var value = field.FieldType.SetRandomValue();
+                field.SetValue(instance, value);
             }
             return (T)instance;
         }
@@ -79,40 +80,5 @@ namespace TheChest.Tests.Common.Items
         {
             return Enumerable.Repeat(CreateRandom(), amount).ToArray();
         }
-
-        /// <summary>
-        /// Generates a random value for the specified type.
-        /// Supports primitive types (int, short, long, double, float, decimal, byte, string, bool) and defaults to throwing for unsupported types.
-        /// </summary>
-        /// <typeparam name="Y">The type of value to generate.</typeparam>
-        /// <param name="type">The type information used to determine which random generation strategy to apply.</param>
-        /// <returns>A randomly generated value of type <typeparamref name="Y"/>.</returns>
-        /// <exception cref="NotImplementedException">When random generation for the specified type is not implemented.</exception>
-        private static Y SetRandomValue<Y>(Type type)
-        {
-            var random = new Random();
-
-            return type switch
-            {
-                var t when t == typeof(int) || t == typeof(short) || t == typeof(long)
-                    => (Y)(object)random.Next(1, 1000),
-
-                var t when t == typeof(double) || t == typeof(float) || t == typeof(decimal)
-                    => (Y)(object)(random.NextDouble() * 1000),
-
-                var t when t == typeof(byte)
-                    => (Y)(object)(byte)random.Next(1, 255),
-
-                var t when t == typeof(string)
-                    => (Y)(object)Guid.NewGuid().ToString(),
-
-                var t when t == typeof(bool)
-                    => (Y)(object)(random.Next(0, 2) == 1),
-
-                _ => throw new NotImplementedException(
-                    $"Random generation for type {typeof(Y).Name} is not implemented.")
-            };
-        }
-
     }
 }

@@ -21,5 +21,3 @@
 ## What's next
 * Expand item factory support for more types
 * Make type-driven conditional attributes work
-* Improve DI container features
-* Add documentation and examples
