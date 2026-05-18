@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheChest.Tests.Common.Items.ValueType
+namespace TheChest.Tests.Common.Items.ValueTypes
 {
     /// <summary>
     /// A simple value-type test item used by the common testing utilities.

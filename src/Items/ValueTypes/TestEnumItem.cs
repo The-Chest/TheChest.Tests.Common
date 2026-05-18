@@ -1,4 +1,4 @@
-﻿namespace TheChest.Tests.Common.Items.ValueType
+﻿namespace TheChest.Tests.Common.Items.ValueTypes
 {
     /// <summary>
     /// Enumeration representing a set of sample item values used in testing.

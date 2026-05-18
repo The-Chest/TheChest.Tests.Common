@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheChest.Tests.Common.Items.ReferenceType
+namespace TheChest.Tests.Common.Items.ReferenceTypes
 {
     /// <summary>
     /// A simple reference-type test item used within the test utilities.
