@@ -7,7 +7,7 @@ namespace TheChest.Tests.Common.DependencyInjection
     /// <summary>
     /// Central registry of services and implementations for the custom DI container.
     /// </summary>
-    public sealed class DIRegistry
+    internal sealed class DIRegistry
     {
         private readonly Dictionary<Type, Registration> registrations;
         private readonly List<Registration> openGenericRegistrations;

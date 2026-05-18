@@ -5,7 +5,7 @@ namespace TheChest.Tests.Common.DependencyInjection
     /// <summary>
     /// Represents a service registration for the DI container, including service type, implementation, and factory.
     /// </summary>
-    public sealed class Registration
+    internal sealed class Registration
     {
         /// <summary>
         /// The registered service type.
