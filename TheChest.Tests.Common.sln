@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C5C59F8-6FFB-489D-9F0E-8B81F1817C24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B82B8561-B1B9-4C7B-B2FB-BDA4740E35D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheChest.Tests.Common", "src\TheChest.Tests.Common.csproj", "{75678F88-F587-8E8B-D1EC-E77C37260C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheChest.Tests.Common.Tests", "tests\TheChest.Tests.Common.Tests.csproj", "{F0BEA60C-D107-B701-A3A8-4927A6E08530}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{D9F41917-53CE-4B69-9867-B33CF318C1FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ai", "ai", "{63FDF8CF-DD86-41B2-BBB0-1F8590621D9C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\copilot-instructions.md = .github\copilot-instructions.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflow", "workflow", "{543347DE-EE19-4701-BF5A-AB710CA70B60}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish_library.workflow.yml = .github\workflows\publish_library.workflow.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75678F88-F587-8E8B-D1EC-E77C37260C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75678F88-F587-8E8B-D1EC-E77C37260C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75678F88-F587-8E8B-D1EC-E77C37260C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75678F88-F587-8E8B-D1EC-E77C37260C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0BEA60C-D107-B701-A3A8-4927A6E08530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0BEA60C-D107-B701-A3A8-4927A6E08530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0BEA60C-D107-B701-A3A8-4927A6E08530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0BEA60C-D107-B701-A3A8-4927A6E08530}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75678F88-F587-8E8B-D1EC-E77C37260C80} = {7C5C59F8-6FFB-489D-9F0E-8B81F1817C24}
+		{F0BEA60C-D107-B701-A3A8-4927A6E08530} = {B82B8561-B1B9-4C7B-B2FB-BDA4740E35D4}
+		{63FDF8CF-DD86-41B2-BBB0-1F8590621D9C} = {D9F41917-53CE-4B69-9867-B33CF318C1FE}
+		{543347DE-EE19-4701-BF5A-AB710CA70B60} = {D9F41917-53CE-4B69-9867-B33CF318C1FE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0892135-EBC4-4476-82FA-4A87F5038F92}
+	EndGlobalSection
+EndGlobal
