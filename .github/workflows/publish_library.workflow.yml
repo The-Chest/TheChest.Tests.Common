@@ -10,6 +10,9 @@ permissions:
 
 env:
   PROJECT_NAME: "TheChest.Tests.Common"
+  BUILD_PATH: "src/bin/Release"
+  TARGET_FRAMEWORK: "netstandard2.1"
+  DOTNET_VERSION: "6.0.x"
 
 jobs:
   build:
@@ -24,7 +27,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Dotnet Build
         id: dotnet-build
@@ -33,7 +36,7 @@ jobs:
           project-path: "src"
           create-build-artifact: true
           artifact-name: "${{ env.PROJECT_NAME }}.${{ steps.get-version.outputs.version }}"
-          artifact-folder: "src/bin/Release/netstandard2.1"
+          artifact-folder: "${{ env.BUILD_PATH }}/${{ env.TARGET_FRAMEWORK }}"
   publish:
     runs-on: ubuntu-latest
     needs: build
@@ -48,7 +51,7 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: "${{ env.PROJECT_NAME }}.${{ steps.get-version.outputs.version }}"
-          path: "src/bin/Release/netstandard2.1"
+          path: "${{ env.BUILD_PATH }}/${{ env.TARGET_FRAMEWORK }}"
 
       - name: Restore dependencies
         run: dotnet restore src
@@ -60,6 +63,6 @@ jobs:
         uses: The-Chest/Actions/upload-release-artifacts@v1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-          path: "src/bin/Release/netstandard2.1"
+          path: "${{ env.BUILD_PATH }}/${{ env.TARGET_FRAMEWORK }}"
           name: "${{ env.PROJECT_NAME }}.dll"
           version: "${{ steps.get-version.outputs.version }}"
