@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TheChest.Tests.Common.DependencyInjection
+namespace TheChest.Tests.Common.Configurations.DependencyInjection
 {
     /// <summary>
     /// Central registry of services and implementations for the custom DI container.
@@ -17,8 +17,8 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// </summary>
         public DIRegistry()
         {
-            this.registrations = new Dictionary<Type, Registration>();
-            this.openGenericRegistrations = new List<Registration>();
+            registrations = new Dictionary<Type, Registration>();
+            openGenericRegistrations = new List<Registration>();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <typeparam name="TImpl">The implementation type.</typeparam>
         public void Register<TService, TImpl>() where TImpl : TService
         {
-            this.Register(typeof(TService), typeof(TImpl));
+            Register(typeof(TService), typeof(TImpl));
         }
 
         /// <summary>
@@ -42,11 +42,11 @@ namespace TheChest.Tests.Common.DependencyInjection
 
             if (serviceType.IsGenericTypeDefinition || implementationType.IsGenericTypeDefinition)
             {
-                this.openGenericRegistrations.Add(registration);
+                openGenericRegistrations.Add(registration);
             }
             else 
             {
-                this.registrations[serviceType] = registration;
+                registrations[serviceType] = registration;
             }
         }
 
@@ -57,7 +57,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <param name="factory">The factory function.</param>
         public void Register<TService>(Func<DIContainer, object> factory)
         {
-            this.registrations[typeof(TService)] = new Registration(typeof(TService), factory);
+            registrations[typeof(TService)] = new Registration(typeof(TService), factory);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace TheChest.Tests.Common.DependencyInjection
                 throw new ArgumentNullException(nameof(instance));
 
             var serviceType = typeof(TService);
-            this.registrations[serviceType] = new Registration(serviceType, c => instance);
+            registrations[serviceType] = new Registration(serviceType, c => instance);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <typeparam name="TService">The service type.</typeparam>
         public bool IsRegistered<TService>()
         {
-            return this.TryGetRegistration(typeof(TService), out var _);
+            return TryGetRegistration(typeof(TService), out var _);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace TheChest.Tests.Common.DependencyInjection
             if (serviceType.IsGenericType)
             {
                 var genDef = serviceType.GetGenericTypeDefinition();
-                var match = this.openGenericRegistrations.FirstOrDefault(r => r.ServiceType == genDef);
+                var match = openGenericRegistrations.FirstOrDefault(r => r.ServiceType == genDef);
                 if (match != null)
                 {
                     if (match.ImplementationType == null)

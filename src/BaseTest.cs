@@ -1,5 +1,5 @@
 ﻿using System;
-using TheChest.Tests.Common.DependencyInjection;
+using TheChest.Tests.Common.Configurations.DependencyInjection;
 using TheChest.Tests.Common.Items;
 using TheChest.Tests.Common.Items.Interfaces;
 

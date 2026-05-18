@@ -3,7 +3,7 @@ using System.Reflection;
 using TheChest.Tests.Common.Attributes.Reflection;
 using TheChest.Tests.Common.Extensions;
 
-namespace TheChest.Tests.Common.DependencyInjection
+namespace TheChest.Tests.Common.Configurations.DependencyInjection
 {
     /// <summary>
     /// Custom Dependency Injection container for tests, responsible for registering and resolving services and factories.
@@ -17,7 +17,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// </summary>
         public DIContainer() 
         {
-            this.registry = new DIRegistry();
+            registry = new DIRegistry();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <typeparam name="TImpl">The implementation type.</typeparam>
         public DIContainer Register<TService, TImpl>() where TImpl : TService
         {
-            this.registry.Register(typeof(TService), typeof(TImpl));
+            registry.Register(typeof(TService), typeof(TImpl));
             return this;
         }
 
@@ -38,7 +38,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <param name="implementationType">The implementation type.</param>
         public DIContainer Register(Type serviceType, Type implementationType)
         {
-            this.registry.Register(serviceType, implementationType);
+            registry.Register(serviceType, implementationType);
             return this;
         }
 
@@ -49,7 +49,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <param name="factory">The factory function.</param>
         public DIContainer Register<TService>(Func<DIContainer, TService> factory)
         {
-            this.registry.Register(factory);
+            registry.Register(factory);
             return this;
         }
 
@@ -60,7 +60,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <param name="instance">The service instance.</param>
         public DIContainer Register<TService>(TService instance)
         {
-            this.registry.Register(instance);
+            registry.Register(instance);
             return this;
         }
 
@@ -70,14 +70,14 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <typeparam name="TService">The service type.</typeparam>
         public bool IsRegistered<TService>()
         {
-            return this.registry.IsRegistered<TService>();
+            return registry.IsRegistered<TService>();
         }
 
         /// <summary>
         /// Resolves an instance of the registered service.
         /// </summary>
         /// <typeparam name="T">The service type.</typeparam>
-        public T Resolve<T>() => (T)this.Resolve(typeof(T));
+        public T Resolve<T>() => (T)Resolve(typeof(T));
 
         /// <summary>
         /// Resolves an instance of the registered service by type.
@@ -85,7 +85,7 @@ namespace TheChest.Tests.Common.DependencyInjection
         /// <param name="serviceType">The service type.</param>
         public object Resolve(Type serviceType)
         {
-            if (!this.registry.TryGetRegistration(serviceType, out var reg))
+            if (!registry.TryGetRegistration(serviceType, out var reg))
                 throw new InvalidOperationException($"Service {serviceType} is not registered");
 
             if (reg == null)
@@ -107,13 +107,13 @@ namespace TheChest.Tests.Common.DependencyInjection
             var parameters = new object[args.Length];
             for (var i = 0; i < args.Length; i++)
             {
-                parameters[i] = this.Resolve(args[i].ParameterType);
+                parameters[i] = Resolve(args[i].ParameterType);
             }
 
             instance ??= constructor.Invoke(parameters)!;
 
             //TODO: separate in a "FactoryResolver" or something like that
-            if ((implType.Name.Contains("Factory")) && (implType.Namespace?.EndsWith("Factories") ?? false))
+            if (implType.Name.Contains("Factory") && (implType.Namespace?.EndsWith("Factories") ?? false))
             {
                 var method = typeof(ReflectionExceptionHandleProxy<>)
                     .MakeGenericType(serviceType)

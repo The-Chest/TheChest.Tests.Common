@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheChest.Tests.Common.DependencyInjection
+namespace TheChest.Tests.Common.Configurations.DependencyInjection
 {
     /// <summary>
     /// Represents a service registration for the DI container, including service type, implementation, and factory.
