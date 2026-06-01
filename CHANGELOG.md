@@ -1,3 +1,57 @@
+﻿# v0.2.0
+
+## What's Added
+* Extension methods for reflection-based test utilities
+  * `ContainerExtensions`
+    * `GetTypeIfImplements(Type interfaceType)`
+      * Checks whether a type implements the specified interface and returns the validated type.
+    * `GetSlotsField()`
+      * Retrieves the internal `slots` field from container implementations.
+  * `SlotExtensions`
+    * `GetSlotTypeByConstructor<TSlotInterface>(string slotParameterName = "slots")`
+      * Retrieves the slot type used by a container constructor.
+    * `GetContentField()`
+      * Retrieves the internal `content` field from slot implementations.
+    * `GetContentFieldValue<T>()`
+      * Retrieves the value stored in a slot.
+    * `GetContentFieldValues<T>()`
+      * Retrieves the values stored in stack-based slot implementations.
+
+## What's Changed
+* Project structure reorganization
+  * Moved attributes, extensions, item types, configuration classes, and test base classes to a simplified folder structure.
+  * Renamed dependency injection namespaces to `TheChest.Tests.Common.Configurations.DependencyInjection`.
+* Dependency Injection
+  * `DIRegistration`
+    * Changed visibility from `public` to `internal`.
+  * `DIRegistry`
+    * Changed visibility from `public` to `internal`.
+* Test items
+  * Renamed namespaces from singular to plural forms.
+    * `Items.ReferenceType` → `Items.ReferenceTypes`
+    * `Items.ValueType` → `Items.ValueTypes`
+* Project configuration
+  * Updated package documentation paths for `README.md` and `CHANGELOG.md`.
+
+## What's Removed
+* Removed dependency on `TheChest.Core` package.
+* Removed interface-specific reflection extensions.
+  * `IContainerExtensions`
+    * Replaced by container-agnostic extension methods.
+  * `ISlotExtensions`
+    * Replaced by slot-agnostic extension methods.
+
+## What's Fixed
+* Dependency Injection
+  * Improved internal implementation consistency by removing unnecessary `this` qualifiers.
+  * Simplified internal resolution and registration calls.
+  * Simplified factory detection condition checks.
+
+## Known Issues
+* Reflection-based extensions still depend on internal field names such as `slots` and `content`.
+
+**Full Changelog**: https://github.com/The-Chest/TheChest.Templates/compare/v0.1.0...v0.2.0
+
 # v0.1.0
 
 ## What's Added
