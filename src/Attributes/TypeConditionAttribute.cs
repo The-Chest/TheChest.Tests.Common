@@ -18,7 +18,7 @@ namespace TheChest.Tests.Common.Attributes
         /// Determines whether the test should be ignored for the specified type.
         /// </summary>
         /// <param name="type">The type to evaluate.</param>
-        /// <returns>True if the test should be ignored; otherwise, false.</returns>
-        protected abstract bool ShouldIgnore(Type type);
+        /// <returns><see langword="true"/> if the test should be ignored; otherwise, <see langword="false"/>.</returns>
+        protected abstract bool ShouldSkip(Type type);
     }
 }
